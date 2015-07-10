@@ -2,7 +2,6 @@
     <div class="col ends-at-one-third clr box" id="search-filters">
         <h2 class="inline">Filter results</h2>
 
-
         <ul class="available-filters" role="tablist" aria-multiselectable="true">
             <li id="heldby">
                 <h3><a href="#" class="filter-toggler expanded" id="held-by-filters" role="tab">Held by</a></h3>
@@ -131,6 +130,7 @@
         </ul>
 
     </div>
+
     <div class="col ends-at-two-thirds clr box" id="search-results">
         <div class="breather">
             <section class="row">
@@ -149,7 +149,7 @@
 
 
             <ul id="search-control-panel">
-                <li>1 - 15 of 6,072,107 <span class="not-at-smaller">results</span></li>
+                <li>1 - 15 of {{ data.numberOfResults | number }} <span class="not-at-smaller">results</span></li>
                 <li id="sort-form">
                     <form action="/results/r" method="get">
                         <fieldset>
@@ -175,17 +175,17 @@
                     <a onclick="dcsMultiTrack('DCS.dcsuri','/Searchresults/Print','WT.ti','Search Results: Print','WT.cg_n','Utilities','WT.dl','0', 'WT.oss','', 'WT.oss_r','', 'WT.osspageno','', 'WT.ossview','', 'DCSext.searchtype','');"
                        href="javascript:window.print()" title="print">Print</a>
                 </li>
-                <li><a id="show-download-form" href="#" class="toggle-export">Export results</a></li>
+                <li><a id="show-download-form" href="#" class="toggle-export"><input ng-model="data.formVisibility" id="export-toggle" form="export-results" type="checkbox"/><label for="export-toggle">Export results</label></a></li>
             </ul>
             <span class="emphasis-block"><span>Sorting is only enabled when there are fewer than 10,000 results. Refine the search to reduce the number of results to enable sorting.</span></span>
 
-            <div id="export" class="emphasis-block" style="display: none;">
+            <div id="export" class="emphasis-block" ng-show="data.formVisibility">
 
-                <form action="/search/download" method="post">
+                <form action="/search/download" method="post" id="export-results">
                     <fieldset>
                         <legend>Export and download results</legend>
 
-                        <p>Only the first 1,000 records will be exported</p>
+                        <p>You can download up to the first {{ data.maxDownloadable | number }} results from your result set. This represents {{ proportionOfResults() | number:2 }} percent of the current result set</p>
 
                         <input checked="checked" id="CSV" name="dType" type="radio" value="CSV">
                         <label for="CSV">
@@ -206,7 +206,7 @@
                                                                                       value="r">
                     </fieldset>
                 </form>
-                <button id="close-export" class="toggle-export">Close</button>
+                <label for="export-toggle" class="toggle-export" id="close-export">Close</label>
             </div>
             <ul id="search-results">
                 <li>

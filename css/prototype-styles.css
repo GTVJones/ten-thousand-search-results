@@ -1,0 +1,11 @@
+#export {
+    padding-top: 0.1em;
+}
+
+#export-toggle {
+    display: none;
+}
+
+#show-download-form label[for="export-toggle"] {
+    color: #2A5DB0;
+}
