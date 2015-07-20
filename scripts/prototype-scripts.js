@@ -2,7 +2,7 @@ var app = angular.module('tenThousandResults', []);
 
 app.controller('downloadCtrl', function ($scope) {
     $scope.data = {
-        formVisibility : true,
+        formVisibility : false,
         numberOfResults : 6072107,
         maxDownloadable : 10000
     }
