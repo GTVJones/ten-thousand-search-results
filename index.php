@@ -4,7 +4,6 @@
     <body ng-controller="downloadCtrl">
         <?php require_once('includes/header.php'); ?>
         <main id="page_wrap" class="container" role="main">
-            {{ moo }}
             <?php require_once('includes/index-page-breadcrumb.php'); ?>
             <?php require_once('includes/index-page-content.php'); ?>
         </main>
