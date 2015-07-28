@@ -185,7 +185,8 @@
                     <fieldset>
                         <legend>Export and download results</legend>
 
-                        <p>You can download up to the first {{ data.maxDownloadable | number }} results from your result set. This represents {{ proportionOfResults() | number:2 }} percent of the current result set</p>
+                        <p>You can download up to the first {{ data.maxDownloadable | number }} results from your result set. This represents {{ proportionOfResults() | number:2 }} percent of the current result set. <span ng-show="!data.signedIn">Please <a href="#">register</a> or <a
+                                    href="#">sign in</a> to download 10,000 results.</span></span></p>
 
                         <input checked="checked" id="CSV" name="dType" type="radio" value="CSV">
                         <label for="CSV">
@@ -208,6 +209,7 @@
                 </form>
                 <label for="export-toggle" class="toggle-export" id="close-export">Close</label>
             </div>
+            <label for="signedIn">Signed in</label><input id="signedIn" type="checkbox" ng-model="data.signedIn">
             <ul id="search-results">
                 <li>
                     <a href="/details/rd/ecfc4e36-2a89-4638-9108-b911497af78d">
