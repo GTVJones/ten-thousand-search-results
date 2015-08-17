@@ -193,8 +193,8 @@
                             as spreadsheet (CSV)
                         </label>
 
-                        <input id="HTML" name="dType" type="radio" value="HTML">
-                        <label for="HTML">
+                        <input ng-show="!data.signedIn" id="HTML" name="dType" type="radio" value="HTML">
+                        <label ng-show="!data.signedIn" for="HTML">
                             as web page (HTML)
                         </label>
 
